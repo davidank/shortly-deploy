@@ -74,9 +74,6 @@ module.exports = function(grunt) {
     shell: {
       prodServer: {
         command: 'git push ssh://root@138.197.200.21/root/shortly-deploy/.git master',
-        options: {
-          stdin: true
-        }
       }
     },
   });
@@ -107,7 +104,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('upload', function(n) {
-    if (grunt.option('prod')) {
+    if (grunt.option('prod') || n === 'prod') {
       // add your production server task here
       // console.log('option was prod');
       grunt.task.run(['shell:prodServer']);
@@ -118,6 +115,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'test', 'build', 'upload:prod'
   ]);
 
 
