@@ -73,7 +73,10 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
-        command: 'git push live master'
+        command: 'git push ssh://root@138.197.200.21/root/shortly-deploy/.git master',
+        options: {
+          stdin: true
+        }
       }
     },
   });
