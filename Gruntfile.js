@@ -107,6 +107,7 @@ module.exports = function(grunt) {
     if (grunt.option('prod') || n === 'prod') {
       // add your production server task here
       // console.log('option was prod');
+      console.log('in if statment');
       grunt.task.run(['shell:prodServer']);
     } else {
       grunt.task.run([ 'server-dev' ]);
